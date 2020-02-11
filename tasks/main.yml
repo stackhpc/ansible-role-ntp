@@ -15,10 +15,12 @@
 
 - name: Copy the ntp.conf template file
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  when: ntp_pkg_state not in ['absent', 'removed']
   notify:
   - restart ntp
   tags: [ 'configuration', 'package', 'ntp' ]
 
 - name: Start/stop ntp service
   service: name={{ ntp_service_name }} state={{ ntp_service_state }} enabled={{ ntp_service_enabled }} pattern='/ntpd'
+  when: ntp_pkg_state not in ['absent', 'removed']
   tags: [ 'service', 'ntp' ]
