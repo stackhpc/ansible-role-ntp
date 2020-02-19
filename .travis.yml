@@ -10,7 +10,7 @@ install:
   - echo -e '[defaults]\nroles_path = ../\nhostfile = ./tests/inventory' > ansible.cfg
 script:
   - ansible-playbook --syntax-check tests/role.yml
-  - ansible-playbook --become -v --diff tests/role.yml
+  - ansible-playbook --become -vvvv --diff tests/role.yml
   - >
     ansible-playbook --become tests/role.yml
     | grep -q 'changed=0.*failed=0'
