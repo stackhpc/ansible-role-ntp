@@ -2,6 +2,7 @@
 galaxy_info:
   author: "René Moser"
   license: BSD
+  role_name: ntp
   min_ansible_version: 1.4
   platforms:
    - name: EL
