@@ -1,5 +1,5 @@
 ---
-ntp_pkg_state: 'present'
+ntp_pkg_state: "{{ 'present' if ntp_service_enabled else 'absent' }}"
 ntp_service_state: 'started'
 ntp_service_enabled: 'yes'
 ntp_blacklist_enabled: "{{ ntp_service_enabled }}"
